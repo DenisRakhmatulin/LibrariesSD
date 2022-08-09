@@ -4,19 +4,20 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import com.sardavisgeekbrains.librariessd.databinding.ActivityMainBinding
+import moxy.MvpAppCompatActivity
+import moxy.ktx.moxyPresenter
 
-class MainActivity : AppCompatActivity(), MainView {
+
+class MainActivity : MvpAppCompatActivity(), MainView {
 
     private lateinit var binding: ActivityMainBinding
 
-    private lateinit var presenter: CountersPresenter
+    private val presenter by moxyPresenter { CountersPresenter(CountersModel()) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-        initPresenter()
 
         with(binding) {
             btnNumber1.setOnClickListener {
@@ -31,9 +32,6 @@ class MainActivity : AppCompatActivity(), MainView {
         }
     }
 
-    private fun initPresenter() {
-        presenter = CountersPresenter(this)
-    }
 
 
     override fun setCounterOne(counter: String) = with(binding) {

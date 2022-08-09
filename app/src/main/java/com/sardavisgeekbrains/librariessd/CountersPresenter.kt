@@ -1,22 +1,26 @@
 package com.sardavisgeekbrains.librariessd
 
-class CountersPresenter(private val view: MainView) {
+import moxy.MvpPresenter
 
-    val model = CountersModel()
+class CountersPresenter(private val model : CountersModel) : MvpPresenter<MainView>(){
+
+    override fun onFirstViewAttach() {
+        super.onFirstViewAttach()
+    }
 
     fun onCounterOneClick(){
         val newValue = model.next(0)
-        view.setCounterOne(newValue.toString())
+        viewState.setCounterOne(newValue.toString())
     }
 
     fun onCounterTwoClick(){
         val newValue = model.next(1)
-        view.setCounterTwo(newValue.toString())
+        viewState.setCounterTwo(newValue.toString())
     }
 
     fun onCounterThreeClick(){
         val newValue = model.next(2)
-        view.setCounterThree(newValue.toString())
+        viewState.setCounterThree(newValue.toString())
     }
 
 }
