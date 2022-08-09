@@ -2,4 +2,7 @@
     <string name="app_name">LibrariesSD</string>
     <string name="this_is_the_button">This is the button</string>
     <string name="button">Button</string>
+    <string name="number1">Number1</string>
+    <string name="number3">Number3</string>
+    <string name="number2">Number2</string>
 </resources>
