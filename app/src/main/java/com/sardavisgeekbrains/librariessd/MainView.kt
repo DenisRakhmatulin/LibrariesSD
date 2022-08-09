@@ -2,5 +2,9 @@ package com.sardavisgeekbrains.librariessd
 
 interface MainView {
 
-    fun setText(counter: String, id: Int)
+    fun setCounterOne(counter: String)
+
+    fun setCounterTwo(counter: String)
+
+    fun setCounterThree(counter: String)
 }
