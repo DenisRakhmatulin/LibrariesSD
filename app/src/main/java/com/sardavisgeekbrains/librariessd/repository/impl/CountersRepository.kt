@@ -1,6 +1,6 @@
-package com.sardavisgeekbrains.librariessd
+package com.sardavisgeekbrains.librariessd.repository.impl
 
-class CountersModel {
+class CountersRepository {
 
     private val counters = mutableListOf(0, 0, 0)
 

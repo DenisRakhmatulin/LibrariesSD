@@ -1,5 +1,6 @@
 package com.sardavisgeekbrains.librariessd
 
+import com.sardavisgeekbrains.librariessd.model.GithubUser
 import moxy.MvpView
 import moxy.viewstate.strategy.AddToEndSingleStrategy
 import moxy.viewstate.strategy.StateStrategyType
@@ -7,9 +8,7 @@ import moxy.viewstate.strategy.StateStrategyType
 @StateStrategyType(AddToEndSingleStrategy::class)
 interface MainView : MvpView {
 
-    fun setCounterOne(counter: String)
+    fun initList(list: List<GithubUser>)
 
-    fun setCounterTwo(counter: String)
-
-    fun setCounterThree(counter: String)
+    //fun updateList(list: List<GithubUser>)
 }
