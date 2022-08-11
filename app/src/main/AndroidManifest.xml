@@ -4,6 +4,7 @@
     package="com.sardavisgeekbrains.librariessd">
 
     <application
+        android:name=".GeekBrainsApp"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"

@@ -6,4 +6,5 @@
     <string name="number3">Number3</string>
     <string name="number2">Number2</string>
     <string name="itemDefaultText">Default user</string>
+    <string name="activity">Activity</string>
 </resources>

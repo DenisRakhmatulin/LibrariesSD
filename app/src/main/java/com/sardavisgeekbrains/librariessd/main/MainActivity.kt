@@ -2,12 +2,12 @@ package com.sardavisgeekbrains.librariessd.main
 
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.sardavisgeekbrains.librariessd.CountersPresenter
-import com.sardavisgeekbrains.librariessd.MainView
+import com.github.terrakok.cicerone.androidx.AppNavigator
+import com.sardavisgeekbrains.librariessd.GeekBrainsApp
+import com.sardavisgeekbrains.librariessd.R
+import com.sardavisgeekbrains.librariessd.core.OnBackPressedListener
 import com.sardavisgeekbrains.librariessd.databinding.ActivityMainBinding
 import com.sardavisgeekbrains.librariessd.model.GithubUser
-import com.sardavisgeekbrains.librariessd.repository.GithubRepository
-import com.sardavisgeekbrains.librariessd.repository.impl.CountersRepository
 import com.sardavisgeekbrains.librariessd.repository.impl.GithubRepositoryImpl
 import moxy.MvpAppCompatActivity
 import moxy.ktx.moxyPresenter
@@ -15,26 +15,35 @@ import moxy.ktx.moxyPresenter
 
 class MainActivity : MvpAppCompatActivity(), MainView {
 
+    private val navigator = AppNavigator(this, R.id.containerMain)
     private lateinit var binding: ActivityMainBinding
-    private val adapter = UserAdapter()
 
-    private val presenter by moxyPresenter { CountersPresenter(GithubRepositoryImpl()) }
+    private val presenter by moxyPresenter { MainPresenter(GeekBrainsApp.instance.router) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+    }
 
-        with(binding) {
-            rvGithubUsers.layoutManager = LinearLayoutManager(this@MainActivity)
-            rvGithubUsers.adapter = adapter
-            //rvGithubUsers.setItemViewCacheSize(1)
+    override fun onResumeFragments() {
+        super.onResumeFragments()
+        GeekBrainsApp.instance.navigationHolder.setNavigator(navigator)
+    }
+
+    override fun onPause() {
+        GeekBrainsApp.instance.navigationHolder.removeNavigator()
+        super.onPause()
+    }
+
+    override fun onBackPressed() {
+        supportFragmentManager.fragments.forEach { currentFragment ->
+            if (currentFragment is OnBackPressedListener && currentFragment.onBackPressed()) {
+                return
+            }
         }
-    }
+        presenter.onBackPressed()
 
-    override fun initList(list: List<GithubUser>) {
-        adapter.users = list
     }
-
 
 }
