@@ -7,9 +7,10 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.sardavisgeekbrains.librariessd.R
+import com.sardavisgeekbrains.librariessd.details.OnClick
 import com.sardavisgeekbrains.librariessd.model.GithubUser
 
-class UserAdapter : RecyclerView.Adapter<GithubUserViewHolder>() {
+class UserAdapter(private val onClick: OnClick) : RecyclerView.Adapter<GithubUserViewHolder>() {
     var users: List<GithubUser> = emptyList()
         @SuppressLint("NotifyDataSetChanged")
         set(value) {
@@ -24,6 +25,9 @@ class UserAdapter : RecyclerView.Adapter<GithubUserViewHolder>() {
 
     override fun onBindViewHolder(holder: GithubUserViewHolder, position: Int) {
         holder.bind(users[position])
+        holder.itemView.setOnClickListener {
+            onClick.sendData(users[position].login)
+        }
     }
 
     override fun getItemCount() = users.size

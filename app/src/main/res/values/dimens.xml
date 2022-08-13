@@ -2,4 +2,5 @@
 <resources>
     <dimen name="itemUserNameSize">30sp</dimen>
     <dimen name="itemDefaultPadding">16dp</dimen>
+    <dimen name="details_login_text_size">40sp</dimen>
 </resources>
