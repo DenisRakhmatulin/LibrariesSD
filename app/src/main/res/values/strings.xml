@@ -5,4 +5,7 @@
     <string name="number1">Number1</string>
     <string name="number3">Number3</string>
     <string name="number2">Number2</string>
+    <string name="itemDefaultText">Default user</string>
+    <string name="activity">Activity</string>
+    <string name="selected_user_is">Selected user is:</string>
 </resources>
