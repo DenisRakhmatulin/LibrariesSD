@@ -8,7 +8,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.sardavisgeekbrains.librariessd.GeekBrainsApp
 import com.sardavisgeekbrains.librariessd.core.OnBackPressedListener
 import com.sardavisgeekbrains.librariessd.databinding.FragmentUserListBinding
-import com.sardavisgeekbrains.librariessd.details.DetailsFragment
 import com.sardavisgeekbrains.librariessd.details.OnClick
 import com.sardavisgeekbrains.librariessd.main.UserAdapter
 import com.sardavisgeekbrains.librariessd.model.GithubUser
@@ -53,13 +52,13 @@ class UserFragment : MvpAppCompatFragment(), UserView, OnBackPressedListener, On
         adapter.users = list
     }
 
-    /*override fun showLoading() {
-
+    override fun showLoading() {
+        viewBinding.progressBar.visibility = View.VISIBLE
     }
 
     override fun hideLoading() {
-
-    }*/
+        viewBinding.progressBar.visibility = View.GONE
+    }
 
     override fun onBackPressed() = presenter.onBackPressed()
 
