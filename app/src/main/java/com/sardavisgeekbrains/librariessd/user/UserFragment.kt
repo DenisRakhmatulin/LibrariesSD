@@ -45,6 +45,7 @@ class UserFragment : MvpAppCompatFragment(), UserView, OnBackPressedListener, On
         with(viewBinding) {
             rvGithubUsers.layoutManager = LinearLayoutManager(requireContext())
             rvGithubUsers.adapter = adapter
+            convFragmentBtn.setOnClickListener { presenter.setConvertFragment() }
         }
     }
 
