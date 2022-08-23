@@ -2,6 +2,7 @@ package com.sardavisgeekbrains.librariessd.user
 
 import android.util.Log
 import com.github.terrakok.cicerone.Router
+import com.sardavisgeekbrains.librariessd.core.nav.ConvertScreen
 import com.sardavisgeekbrains.librariessd.core.nav.DetailsScreen
 import com.sardavisgeekbrains.librariessd.repository.GithubRepository
 import moxy.MvpPresenter
@@ -28,5 +29,10 @@ class UserPresenter(private val repository: GithubRepository, private val router
     fun setDetailsFragment(login: String) {
         router.navigateTo(DetailsScreen(login))
     }
+
+    fun setConvertFragment() {
+        router.navigateTo(ConvertScreen)
+    }
+
 
 }

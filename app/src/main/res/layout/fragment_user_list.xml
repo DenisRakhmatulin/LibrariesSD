@@ -8,6 +8,15 @@
     android:orientation="vertical"
     tools:context=".main.MainActivity">
 
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/convFragmentBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end|bottom"
+        android:layout_margin="@dimen/itemDefaultPadding"
+        android:src="@drawable/ic_image_conv"
+        />
+
     <ProgressBar
         android:id="@+id/progressBar"
         android:layout_width="wrap_content"
